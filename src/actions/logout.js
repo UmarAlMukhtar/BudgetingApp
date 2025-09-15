@@ -1,6 +1,9 @@
 // rrd imports
 import { redirect } from "react-router-dom";
 
+// library imports
+import { toast } from "react-toastify";
+
 // helpers
 import { deleteItem } from "../helpers";
 
@@ -9,6 +12,7 @@ export async function logoutAction() {
   deleteItem({
     key: "userName",
   });
+  toast.success("Logout Successful");
 
   //return redirect
   return redirect("/");
