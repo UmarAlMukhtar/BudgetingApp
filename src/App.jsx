@@ -1,10 +1,8 @@
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-// library imports
-  import { ToastContainer, toast } from 'react-toastify';
+// Library
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 // Layouts
 import Main, { mainLoader } from "./layouts/Main";
@@ -12,10 +10,13 @@ import Main, { mainLoader } from "./layouts/Main";
 // Actions
 import { logoutAction } from "./actions/logout";
 
-
 // Routes
-import Dashboard, { dashboardLoader, dashboardAction } from "./pages/Dashboard";
+import Dashboard, { dashboardAction, dashboardLoader } from "./pages/Dashboard";
 import Error from "./pages/Error";
+import ExpensesPage, {
+  expensesAction,
+  expensesLoader,
+} from "./pages/ExpensesPage";
 
 const router = createBrowserRouter([
   {
@@ -32,18 +33,26 @@ const router = createBrowserRouter([
         errorElement: <Error />,
       },
       {
-        path: "/logout",
+        path: "expenses",
+        element: <ExpensesPage />,
+        loader: expensesLoader,
+        action: expensesAction,
+      },
+      {
+        path: "logout",
         action: logoutAction,
       },
-    ]
-  }, 
+    ],
+  },
 ]);
 
 function App() {
-  return<>
-    <RouterProvider router={router} />
-    <ToastContainer />
-  </>
+  return (
+    <div className="App">
+      <RouterProvider router={router} />
+      <ToastContainer />
+    </div>
+  );
 }
 
-export default App
+export default App;

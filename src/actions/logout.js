@@ -12,6 +12,12 @@ export async function logoutAction() {
   deleteItem({
     key: "userName",
   });
+  deleteItem({
+    key: "budgets",
+  });
+  deleteItem({
+    key: "expenses",
+  });
   toast.success("Logout Successful");
 
   //return redirect
