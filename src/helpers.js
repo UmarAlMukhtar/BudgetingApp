@@ -68,16 +68,14 @@ export const calculateSpentByBudget = (budgetId) => {
     if (expense.budgetId !== budgetId) return acc;
 
     // add the current amount to my total
-    return acc + expense.amount;
+    return (acc += expense.amount);
   }, 0);
   return budgetSpent;
 };
 
 // FORMATTING
-
-export const formatDateToLocaleString = (epoch) => {
-  return new Date(epoch).toLocaleDateString();
-};
+export const formatDateToLocaleString = (epoch) =>
+  new Date(epoch).toLocaleDateString();
 
 // format percentage
 export const formatPercentage = (amount) => {
