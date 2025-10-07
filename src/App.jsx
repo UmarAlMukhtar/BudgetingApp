@@ -22,7 +22,7 @@ import Error from "./pages/Error";
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "/BudgetingApp",
     element: <Main />,
     loader: mainLoader,
     errorElement: <Error />,
